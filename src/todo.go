@@ -5,6 +5,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -43,9 +44,26 @@ func (todos *Todos) appendTodo(x1todo *Todo) {
 	*todos = append(*todos, *x1todo)
 }
 
+// validate Todos slice index
+func (todos *Todos) validateIndex(index int) error {
+	if index < 0 || index > len(*todos) {
+		err := errors.New("Invalid index")
+		fmt.Println(err)
+		return err
+	}
+
+	return nil
+}
+
 // delete todo title
-func (todos *Todos) deleteTitle(index int) {
+func (todos *Todos) deleteTitle(index int) error {
+	if err := *todos.validateIndex(index); err != nil {
+		return err
+	}
+
 	*todos = append((*todos)[:index], (*todos)[index+1:]...)
+
+	return nil
 }
 
 // Receiver functions
