@@ -16,18 +16,24 @@ func newTodo(title string) Todo {
 	}
 }
 
-func (b *Todo) updateTitle(title string) {
-	(*b).title = title
+// update todo title
+func (x1todo *Todo) updateTitle(title string) {
+	(*x1todo).title = title
 }
 
-// updateCompleted
-func (b *Todo) updateCompleted() {
-	b.completed = !b.completed
+// update todo completed
+func (x1todo *Todo) updateCompleted() {
+	x1todo.completed = !x1todo.completed
 
-	if b.completed {
+	if x1todo.completed {
 		now := time.Now()
-		b.completedAt = &now
+		x1todo.completedAt = &now
 	} else {
-		b.completedAt = nil
+		x1todo.completedAt = nil
 	}
+}
+
+// appendTodo adds a new Todo to the Todos slice.
+func (todos *Todos) appendTodo(x1todo *Todo) {
+	*todos = append(*todos, *x1todo)
 }

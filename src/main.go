@@ -4,10 +4,19 @@
 
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	fmt.Println("x1")
+	x1todo := newTodo("x1Go")
+	fmt.Printf("Todo: %+v\n", x1todo)
+
+	x1todo.updateTitle("x2Go")
+	fmt.Printf("Todo: %+v\n", x1todo)
+
+	x1todo.updateCompleted()
+	fmt.Printf("Todo: %+v\n", x1todo)
+
+	var todos Todos
+	todos.appendTodo(&x1todo)
+	fmt.Printf("Todos Slice: %+v\n", todos)
 }

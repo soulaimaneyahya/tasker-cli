@@ -42,7 +42,9 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## x1
 
-Go does not support unions like `time.Time | nil` directly. Instead, to represent an optional `time.Time` is by using a pointer (`*time.Time`)
+- Go does not support unions like `time.Time | nil` directly. Instead, to represent an optional `time.Time` is by using a pointer (`*time.Time`)
+
+- %+v is especially helpful for debugging, as it provides both the field names and values in the output.
 
 ----- 
 Need helps? Reach me out

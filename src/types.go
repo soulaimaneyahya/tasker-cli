@@ -14,4 +14,5 @@ type Todo struct {
 	completedAt *time.Time
 }
 
+// Todos type
 type Todos []Todo
