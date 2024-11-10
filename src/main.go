@@ -18,8 +18,8 @@ func main() {
 
 	var todos Todos
 	todos.appendTodo(&x1todo)
-	fmt.Printf("Todos Slice: %+v\n", todos)
+	fmt.Println(todos.format())
 
 	todos.deleteTitle(0)
-	fmt.Printf("Todos Slice: %+v\n", todos)
+	fmt.Println(todos.format())
 }
