@@ -1,6 +1,6 @@
 # Tasker CLI
 
-<img alt="cli-img" />
+<img src="./imgs/1.png" alt="cli-img" />
 
 CLI Todo App written in Go
 

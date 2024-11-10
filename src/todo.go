@@ -66,31 +66,33 @@ func (todos *Todos) deleteTitle(index int) error {
 	return nil
 }
 
-// Receiver functions
-// format method for Todos
+// Receiver function to format Todos as a Markdown table with aligned fields
 func (todos *Todos) format() string {
-	fs := "Todo List:\n"
+	fs := fmt.Sprintf("| %-10s | %-25s | %-25s | %-25s | %-25s |\n", "No", "Title", "Status", "Created At", "Completed At")
+	fs += fmt.Sprintf("| %-10s | %-25s | %-25s | %-25s | %-25s |\n", "---", "-----", "------", "----------", "------------")
 
 	if len(*todos) < 1 {
-		fs += "No todo found"
-
+		fs += fmt.Sprintf("| %-25s |\n", "No todo found")
 		return fs
 	}
 
 	for i, todo := range *todos {
 		status := "Incomplete"
+		completedAt := "null"
 
 		if todo.completed {
 			status = "Completed"
+			if todo.completedAt != nil {
+				completedAt = todo.completedAt.Format("2006-01-02 15:04:05")
+			}
 		}
 
-		entry := fmt.Sprintf("%d. %s (Status: %s, Created At: %s", i+1, todo.title, status, todo.createdAt.Format("2006-01-02 15:04:05"))
+		entry := fmt.Sprintf("| %-10d | %-25s | %-25s | %-25s | %-25s |\n",
+			i+1, todo.title, status,
+			todo.createdAt.Format("2006-01-02 15:04:05"),
+			completedAt,
+		)
 
-		if todo.completed && todo.completedAt != nil {
-			entry += fmt.Sprintf(", Completed At: %s", todo.completedAt.Format("2006-01-02 15:04:05"))
-		}
-
-		entry += ")\n"
 		fs += entry
 	}
 
