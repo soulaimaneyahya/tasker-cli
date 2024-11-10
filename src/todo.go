@@ -57,7 +57,7 @@ func (todos *Todos) validateIndex(index int) error {
 
 // delete todo title
 func (todos *Todos) deleteTitle(index int) error {
-	if err := *todos.validateIndex(index); err != nil {
+	if err := (*todos).validateIndex(index); err != nil {
 		return err
 	}
 
