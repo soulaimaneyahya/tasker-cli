@@ -3,7 +3,7 @@
 # Variables
 SRC_DIR := ./src
 DIST_DIR := ./dist
-TODOS_DIR := ./todos/*.txt
+TODO_DIR := ./todo/*.txt
 MAIN_BINARY := $(DIST_DIR)/main
 
 # Default target
@@ -29,4 +29,4 @@ run: build
 # Clean target
 clean:
 	rm -f $(MAIN_BINARY)
-	rm -f $(TODOS_DIR)
+	rm -f $(TODO_DIR)
