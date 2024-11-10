@@ -21,6 +21,7 @@ func newTodo(title string) Todo {
 
 // update todo title
 func (x1todo *Todo) updateTitle(title string) {
+	// go auto dereference pointer
 	// x1todo.title = title
 	(*x1todo).title = title
 }
