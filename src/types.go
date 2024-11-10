@@ -8,8 +8,10 @@ import "time"
 
 // Todo struct type
 type Todo struct {
-	Title       string
-	Completed   bool
+	title       string
+	completed   bool
 	createdAt   time.Time
-	CompletedAt *time.Time
+	completedAt *time.Time
 }
+
+type Todos []Todo
