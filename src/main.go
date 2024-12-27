@@ -1,27 +1,31 @@
-/**
-* Created by @soulaimaneyh on 2024-09-14
- */
-
 package main
 
-import "fmt"
+import (
+	"tasker-cli/src/Models"
+	"tasker-cli/src/Repositories"
+	"tasker-cli/src/Utils"
+)
 
 func main() {
-	x1todo := newTodo("PHP")
-	x2todo := newTodo("Laravel")
-	x3todo := newTodo("Symfony")
-	x4todo := newTodo("Go")
+	repo := &Repositories.TodoRepository{}
 
-	var todos Todos
-	todos.appendTodo(&x1todo)
-	todos.appendTodo(&x2todo)
-	todos.appendTodo(&x3todo)
-	todos.appendTodo(&x4todo)
+	// Create Todos
+	x1todo := &Models.Todo{Title: "PHP"}
+	x2todo := &Models.Todo{Title: "Laravel"}
+	x3todo := &Models.Todo{Title: "Symfony"}
+	x4todo := &Models.Todo{Title: "Go"}
 
-	todos.updateTitleByIndex(0, "x1PHP")
-	todos.updateCompletedAtByIndex(0)
+	repo.Append(x1todo)
+	repo.Append(x2todo)
+	repo.Append(x3todo)
+	repo.Append(x4todo)
 
-	todos.deleteTodo(1)
+	repo.UpdateTitleByIndex(0, "xPHP")
 
-	fmt.Println(todos.format())
+	repo.UpdateCompletedAtByIndex(0)
+
+	repo.Delete(1)
+
+	tableFormatter := &Utils.TableFormatter{Todos: repo.GetTodos()}
+	Utils.FormatTodos(tableFormatter)
 }
