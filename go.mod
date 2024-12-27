@@ -1,6 +1,6 @@
 module tasker-cli
 
-go 1.23.4
+go 1.22.2
 
 require github.com/aquasecurity/table v1.8.0
 

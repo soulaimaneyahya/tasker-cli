@@ -9,12 +9,12 @@ CLI Todo App written in Go
 - Clone the repository:
 
 ```sh
-git clone https://tasker-cli.git
+git clone git@github.com:soulaimaneyahya/tasker-cli.git
 ```
 
 ### Installation
 
-Installing golint
+Install golint
 
 ```
 go install golang.org/x/lint/golint@latest
